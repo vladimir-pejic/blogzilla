@@ -9,7 +9,7 @@ define("DB_NAME", "php_blog");
 
 // URLs
 define("ROOT_PATH", "/");
-define("ROOT_URL", "http://127.0.0.1/php/");
+define("ROOT_URL", "http://127.0.0.1/blogzilla/");
 
 // STATIC VARS
 define("SITE_NAME", "BlogZilla");
