@@ -4,11 +4,12 @@
     <title><?php echo SITE_NAME ?></title>
     <link rel="stylesheet" href="<?php echo ROOT_URL ?>assets/css/bootstrap.css">
     <link rel="stylesheet" href="<?php ROOT_URL ?>assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark" style="margin-bottom: 20px;">
         <a class="navbar-brand" href="#">BlogZilla</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

@@ -1,10 +1,11 @@
-// utf8mb4
-CREATE DATABASE helpspot_db2
+-- Create DATABASE for this platform
+CREATE DATABASE php_blog
     CHARACTER SET utf8mb4
     COLLATE utf8mb4_unicode_ci;
 
 
-// c
+-- Create USERS table
+
 CREATE TABLE `php_blog`.`users`
 
 (
@@ -21,19 +22,18 @@ PRIMARY KEY (`id`), UNIQUE (`email`)
 ENGINE = InnoDB;
 
 
+-- Create POSTS table
 
+CREATE TABLE `php_blog`.`posts`
 
-//altering
-ALTER TABLE `posts` ADD `user_id` INT NOT NULL AFTER `id`;
+(
+`id` INT NOT NULL AUTO_INCREMENT ,
+`title` VARCHAR(255) NOT NULL ,
+`body` TEXT NOT NULL ,
+`link` VARCHAR(255) NOT NULL ,
+`created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ,
 
-// trigger
-CREATE TRIGGER before_employee_update
-    BEFORE UPDATE ON employees
-    FOR EACH ROW
-BEGIN
-    INSERT INTO employees_audit
-    SET action = 'update',
-     employeeNumber = OLD.employeeNumber,
-        lastname = OLD.lastname,
-        changedat = NOW();
-END$$
+PRIMARY KEY (`id`)
+)
+
+ENGINE = InnoDB;

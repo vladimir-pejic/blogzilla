@@ -1,7 +1,9 @@
 <?php
 class UserModel extends Model {
     public function Index() {
-
+        $this->query('SELECT * FROM users');
+        $users = $this->resultset();
+        return $users;
     }
 
     public function register() {
