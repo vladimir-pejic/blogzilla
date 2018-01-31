@@ -1,4 +1,6 @@
 <?php
+// Session start
+session_start();
 
 /*
  * TODO: Need some automatic migration style settings for tables.

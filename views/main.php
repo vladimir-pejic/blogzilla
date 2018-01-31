@@ -29,12 +29,21 @@
             </ul>
         </div>
         <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-            <li class="nav-item">
-                <a class="nav-link" href="<?php echo ROOT_URL ?>users/login">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<?php echo ROOT_URL ?>users/register">Register</a>
-            </li>
+            <?php if(isset($_SESSION['logged_in'])) : ?>
+                <li class="nav-item">
+                    <a href="#" class="nav-link"> Hello <?php echo $_SESSION['user']['first_name'] ?></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo ROOT_URL ?>users/logout">Log out</a>
+                </li>
+            <?php else : ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo ROOT_URL ?>users/login">Log in</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo ROOT_URL ?>users/register">Register</a>
+                </li>
+            <?php endif; ?>
         </ul>
 
     </nav>

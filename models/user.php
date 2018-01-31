@@ -25,4 +25,31 @@ class UserModel extends Model {
         }
         return;
     }
+
+    public function login() {
+        $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        $password = md5($post['password']);
+
+        if($post['submit']) {
+            $this->query('SELECT * FROM users WHERE email = :email AND password = :password');
+            $this->bind(':email', $post['email']);
+            $this->bind(':password', $password);
+            $row = $this->single();
+
+            if($row) {
+                $_SESSION['logged_in'] = true;
+                $_SESSION['user'] = [
+                    'id'            =>  $row['id'],
+                    'first_name'    =>  $row['first_name'],
+                    'last_name'     =>  $row['last_name'],
+                    'email'         =>  $row['email'],
+                ];
+                header('LOCATION: '.ROOT_URL.'posts');
+            } else {
+                header('LOCATION: '.ROOT_URL.'users/login');
+            }
+        }
+        return;
+
+    }
 }
