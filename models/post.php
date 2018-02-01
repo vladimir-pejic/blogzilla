@@ -11,6 +11,12 @@ class PostModel extends Model {
         $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
         if($post['submit']) {
+
+            if($post['title'] == '' || $post['body'] == '' || $post['link'] == '') {
+                Messages::setMessage('All fields are required!', 'error');
+                return;
+            }
+
             $this->query('INSERT INTO posts (user_id, title, body, link) VALUES (:user_id, :title, :body, :link)');
             $this->bind(':user_id', 1);
             $this->bind(':title', $post['title']);
@@ -21,6 +27,7 @@ class PostModel extends Model {
             if($this->lastInsertId()) {
                 // Redirect
                 header('LOCATION: '.ROOT_URL.'posts');
+                Messages::setMessage('Posted successfully!', 'success');
             }
         }
         return;
