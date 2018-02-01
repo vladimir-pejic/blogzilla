@@ -1,5 +1,7 @@
 <div class="col-md-12">
+    <?php if(isset($_SESSION['logged_in'])) : ?>
     <a href="<?php echo ROOT_URL ?>posts/create" class="btn btn-primary btn-block"> + NEW POST + </a>
+    <?php endif; ?>
 </div>
 
 <?php foreach ($viewmodel as $post) : ?>

@@ -9,7 +9,7 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark" style="margin-bottom: 20px;">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" style="margin-bottom: 20px;">
         <a class="navbar-brand" href="#">BlogZilla</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -48,9 +48,12 @@
 
     </nav>
 
-    <div class="container">
+    <div class="container" style="padding-top: 70px;">
 
         <div class="row">
+            <div class="col-md-12">
+                <?php Messages::displayMessage(); ?>
+            </div>
             <?php require($view); ?>
         </div>
 

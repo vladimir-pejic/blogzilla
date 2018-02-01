@@ -11,6 +11,12 @@ class UserModel extends Model {
         $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         $password = md5($post['password']);
         if($post['submit']) {
+
+            if($post['first_name'] == '' || $post['last_name'] == '' || $post['email'] == '' || $post['password'] == '') {
+                Messages::setMessage('All fields are required!', 'error');
+                return;
+            }
+
             $this->query('INSERT INTO users (first_name, last_name, email, password) VALUES (:first_name, :last_name, :email, :password)');
             $this->bind(':first_name', $post['first_name']);
             $this->bind(':last_name', $post['last_name']);
@@ -46,7 +52,7 @@ class UserModel extends Model {
                 ];
                 header('LOCATION: '.ROOT_URL.'posts');
             } else {
-                header('LOCATION: '.ROOT_URL.'users/login');
+                Messages::setMessage('Incorrect credentials!', 'error');
             }
         }
         return;

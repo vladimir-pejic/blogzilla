@@ -6,6 +6,7 @@ session_start();
  * TODO: Need some automatic migration style settings for tables.
  */
 
+require ('classes/Messages.php');
 require ('config.php');
 require ('classes/Bootstrap.php');
 require ('classes/Controller.php');
